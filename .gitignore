@@ -29,3 +29,5 @@ HELP.md
 ### VS Code ###
 .vscode/
 *.class
+bin/main/api_errors.properties
+bin/main/application.properties
