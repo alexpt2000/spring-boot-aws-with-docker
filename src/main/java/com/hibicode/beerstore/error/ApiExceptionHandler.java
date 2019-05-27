@@ -5,6 +5,7 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.hibicode.beerstore.service.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
@@ -53,6 +54,17 @@ public class ApiExceptionHandler {
 
 		return ResponseEntity.badRequest().body(errorResponse);
 	}
+
+	@ExceptionHandler(BusinessException.class)
+	public ResponseEntity<ErrorResponse> handleBusinessException(BusinessException exception, Locale locale) {
+		final String errorCode = exception.getCode();
+		final HttpStatus status = exception.getStatus();
+		final ErrorResponse errorResponse = ErrorResponse.of(status,
+				toApiError(errorCode, locale));
+
+		return ResponseEntity.badRequest().body(errorResponse);
+	}
+
 
 	public ErrorResponse.ApiError toApiError(String code, Locale locale, Object... args) {
 		String message;
