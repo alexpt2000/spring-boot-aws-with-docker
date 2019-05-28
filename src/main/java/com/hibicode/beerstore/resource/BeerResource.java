@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -36,5 +35,11 @@ public class BeerResource {
     public Beer update(@PathVariable long id, @Valid @RequestBody Beer beer) {
         beer.setId(id);
         return beerService.save(beer);
+    }
+
+    @DeleteMapping("{id}")
+    public HttpStatus delete(@PathVariable long id) {
+        beerService.delete(id);
+        return HttpStatus.NO_CONTENT;
     }
 }
