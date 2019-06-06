@@ -16,3 +16,8 @@ docker ps -a
 docker stop beerdb
 docker start beerdb
 ```
+### Terraform
+```
+terraform init
+terraform apply
+```
