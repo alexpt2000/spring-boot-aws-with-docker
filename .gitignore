@@ -35,3 +35,5 @@ bin/main/application.properties
 terraform/.terraform/plugins/darwin_amd64/lock.json
 terraform/.terraform/plugins/darwin_amd64/terraform-provider-aws_v1.60.0_x4
 *.tfstate
+terraform/key/beerstore_key.pub
+terraform/key/beerstore_key
